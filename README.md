@@ -32,6 +32,10 @@ Use the [`./wp`](wp) to run WP CLI commands.
 
 Use the [`./composer`](composer) to run composer commands in the WordPress Container.
 
+## Database
+
+phpMyAdmin is running on [http://127.0.0.1:8001](http://127.0.0.1:8001) and also port `3306` gets automatically bound to your host so you can connect with an SQL client.
+
 ## Logs
 
 Monitor the PHP logs from the WordPress container with:
