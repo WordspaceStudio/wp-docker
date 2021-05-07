@@ -22,6 +22,8 @@ docker-compose up -d
 | WordPress  | [http://localhost:8000/](http://localhost:8000/) 
 | phpMyAdmin | [http://localhost:8001/](http://localhost:8001/) 
 | MailHog    | [http://localhost:8025/](http://localhost:8025/)
+| WP CLI     | –
+| MySQL 8    | `localhost:3306`
 
 ## Mounted WP folder
 Docker expects to find WordPress in a `src/` folder. If it doesn't exist, it creates it and installs WordPress inside. Visit [http://127.0.0.1:8000](http://127.0.0.1:8000) to finish the database installation.
