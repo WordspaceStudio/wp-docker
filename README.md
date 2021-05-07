@@ -2,7 +2,8 @@
 
 - WordPress 5.7.1
 - WP CLI 2.4.0
-- PHP 8
+- PHP 8 (JIT-enabled)
+- Xdebug 3
 - MySQL 8
 - phpMyAdmin
 - MailHog
