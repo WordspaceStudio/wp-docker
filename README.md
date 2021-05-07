@@ -1,9 +1,12 @@
 # WordPress Docker Setup for Development
 
+This setup is for local development only. **DO NOT** use in production.
+
 - WordPress 5.7.1
 - WP CLI 2.4.0
 - PHP 8 (JIT-enabled)
 - Xdebug 3
+- Apache
 - MySQL 8
 - phpMyAdmin
 - MailHog
@@ -20,16 +23,16 @@ docker-compose up -d
 | phpMyAdmin | [http://localhost:8001/](http://localhost:8001/) 
 | MailHog    | [http://localhost:8025/](http://localhost:8025/)
 
-### Mounted WP folder
+## Mounted WP folder
 Docker expects to find WordPress in a `src/` folder. If it doesn't exist, it creates it and installs WordPress inside. Visit [http://127.0.0.1:8000](http://127.0.0.1:8000) to finish the database installation.
 
-### Helper executables
+## Helper executables
 
 Use the [`./wp`](wp) to run WP CLI commands.
 
 Use the [`./composer`](composer) to run composer commands in the WordPress Container.
 
-### Logs
+## Logs
 
 Monitor the PHP logs from the WordPress container with:
 
@@ -37,6 +40,38 @@ Monitor the PHP logs from the WordPress container with:
 docker logs -f $(docker-compose ps -q wp) >/dev/null
 ```
 
-### Debugging
+## Debugging
 
 Xdebug 3 is pre-configured for remote debugging with the IDE key `PHPSTORM`. See [php.ini](dockerenv/php.ini).
+
+## Multisite
+
+For multisite support in sub-directory mode, add this to your `.htaccess`:
+
+```
+RewriteEngine On
+RewriteBase /
+RewriteRule ^index\.php$ - [L]
+
+# add a trailing slash to /wp-admin
+RewriteRule ^wp-admin$ wp-admin/ [R=301,L]
+
+RewriteCond %{REQUEST_FILENAME} -f [OR]
+RewriteCond %{REQUEST_FILENAME} -d
+RewriteRule ^ - [L]
+RewriteRule ^(wp-(content|admin|includes).*) $1 [L]
+RewriteRule ^(.*\.php)$ $1 [L]
+RewriteRule . index.php [L]
+```
+
+And this to your `wp-config.php`:
+
+```php
+define('WP_ALLOW_MULTISITE', true);
+define('MULTISITE', true);
+define('SUBDOMAIN_INSTALL', false);
+define('DOMAIN_CURRENT_SITE', '127.0.0.1:8000');
+define('PATH_CURRENT_SITE', '/');
+define('SITE_ID_CURRENT_SITE', 1);
+define('BLOG_ID_CURRENT_SITE', 1);
+```
