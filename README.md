@@ -3,7 +3,7 @@
 This setup is for local development only. **DO NOT** use in production.
 
 - [WordPress 5.7.1](https://wordpress.org)
-- [WP CLI 2.4.0](wp cli docker)
+- [WP CLI 2.4.0](https://wp-cli.org/)
 - [PHP 8 (JIT-enabled)](https://www.php.net/releases/8.0/en.php)
 - [Xdebug 3](https://xdebug.org)
 - Apache
