@@ -2,14 +2,14 @@
 
 This setup is for local development only. **DO NOT** use in production.
 
-- WordPress 5.7.1
-- WP CLI 2.4.0
-- PHP 8 (JIT-enabled)
-- Xdebug 3
+- [WordPress 5.7.1](https://wordpress.org)
+- [WP CLI 2.4.0](wp cli docker)
+- [PHP 8 (JIT-enabled)](https://www.php.net/releases/8.0/en.php)
+- [Xdebug 3](https://xdebug.org)
 - Apache
 - MySQL 8
-- phpMyAdmin
-- MailHog
+- [phpMyAdmin 5.1](https://www.phpmyadmin.net)
+- [MailHog](https://github.com/mailhog/MailHog)
 
 ### Start Services
 
