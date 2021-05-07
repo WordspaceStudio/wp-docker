@@ -25,9 +25,9 @@ Docker expects to find WordPress in a `src/` folder. If it doesn't exist, it cre
 
 ### Helper executables
 
-Use the `./wp` to run WP CLI commands.
+Use the [`./wp`](wp) to run WP CLI commands.
 
-Use the `./composer` to run composer commands in the WordPress Container.
+Use the [`./composer`](composer) to run composer commands in the WordPress Container.
 
 ### Logs
 
@@ -36,3 +36,7 @@ Monitor the PHP logs from the WordPress container with:
 ```
 docker logs -f $(docker-compose ps -q wp) >/dev/null
 ```
+
+### Debugging
+
+Xdebug 3 is pre-configured for remote debugging with the IDE key `PHPSTORM`. See [php.ini](dockerenv/php.ini).
