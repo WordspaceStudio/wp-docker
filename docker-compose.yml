@@ -19,22 +19,6 @@ services:
       WORDPRESS_DB_USER: root
       WORDPRESS_DB_PASSWORD: root
 
-  wpcli:
-    depends_on:
-      - db
-    image: "wordpress:cli-2.4.0"
-    links:
-      - db
-      - wp
-    volumes:
-      - "./src:/var/www/html"
-    environment:
-      WORDPRESS_DB_HOST: db:3306
-      WORDPRESS_DB_USER: root
-      WORDPRESS_DB_PASSWORD: root
-    entrypoint: wp
-    command: "--info"
-
   phpmyadmin:
     depends_on:
       - db

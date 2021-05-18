@@ -1,4 +1,3 @@
 #!/bin/bash
 
-docker-compose run wpcli "$@"
-
+ docker-compose exec wp wp --allow-root "$@"
