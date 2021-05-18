@@ -9,7 +9,7 @@ services:
     ports:
       - "8000:80"
     volumes:
-      - "./src:/var/www/html"
+      - "./web:/var/www/html"
       - "./dockerenv/php.ini:/usr/local/etc/php/conf.d/php.ini"
     links:
       - mailhog:mail
@@ -39,7 +39,7 @@ services:
     - "1025:1025"
 
   db:
-    image: mysql:8.0.24
+    image: mariadb:10.6
     volumes:
       - "db:/var/lib/mysql"
     environment:
@@ -49,7 +49,6 @@ services:
       MYSQL_ROOT_HOST: '%'
     ports:
       - "3306:3306"
-    command: mysqld --default-authentication-plugin=mysql_native_password --skip-mysqlx
 
 volumes:
   db:
